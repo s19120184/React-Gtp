@@ -15,8 +15,8 @@ type SidebarProps={
 }
 
 export default function SideBarMenuItem({option,setVisible=()=>false,visible}:SidebarProps) {
-  //hola
-  
+  //hola que tal
+
   
   return (
     <>
