@@ -1,0 +1,106 @@
+/* menu de hamburgesa */
+
+.navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .navegacion-principal {
+      flex-direction: row;
+    }
+  }
+  .navegacion-principal a {
+    color: #ffe6a7;
+  }
+  .navegacion-principal a:hover,
+  .navegacion-principal a.active {
+    color: #ffffff;
+  }
+
+.menu {
+    .menu__hamburgesa {
+      position: relative;
+      display: flex;
+      flex-direction: colum;
+      justify-content: left;
+      align-items: center;
+      transition: all 0.9s ease-in-out;
+    }
+    .menu__icono-hambuerger {
+      position: relative;
+      left: 1rem;
+      color: gray;
+      width: 3rem;
+      height: 3rem;
+    }
+    .menu__contenido {
+      position: absolute;
+      top: 4rem;
+      left:-10rem;
+  
+      padding: 1rem;
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content:space-around;
+      gap: 1rem;
+      visibility: hidden;
+      height: 50rem;
+      transition: all 0.5s ease-in;
+      a {
+        
+        font-size: small;
+        font-weight: bold;
+        /* color: #432818; */
+        transition: all 0.5s ease-in;
+        &:hover {
+          color: #0d0630;
+        }
+      }
+    }
+    .desplegar {
+      z-index: 1;
+      background-color: black;
+      visibility: visible;
+      transform: translateX(10rem);
+    }
+  }
+  
+  /* @media (min-width: 768px) {
+    .menu {
+      .menu__hamburgesa {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .menu__icono-hambuerger {
+        position: absolute;
+        left: 30rem;
+      }
+      .menu__contenido {
+        position: relative;
+        top: 10rem;
+        width: 40rem;
+        padding: 1.3rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        visibility: hidden;
+        transition: all 0.5s linear;
+        a {
+          color: #432818;
+          font-size: large;
+        }
+      }
+      .desplegar {
+        z-index: 1;
+        background-color: #bb9457;
+        visibility: visible;
+      }
+    }
+  } */

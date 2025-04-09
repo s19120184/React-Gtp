@@ -1,0 +1,7 @@
+export * from './assistant/AssistanPage'
+export * from './audio-to-text/AudioToTextPage'
+export * from './image-generatin/ImageGenerationPage'
+export * from './orthography/OrthographyPage'
+export * from './pros-cons/ProsConsStreamPage'
+export * from  './text-to-audio/TextToAudioPage'
+export * from './translate/TranslatePage'
