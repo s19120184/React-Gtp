@@ -3,13 +3,19 @@ import GtpMessages from "../../components/chat-bubbles/GtpMessages";
 import MyMessage from "../../components/chat-bubbles/MyMessage";
 import TextMessageBox from "../../components/chat-input-boxes/TextMessageBox";
 import TypingLoader from "../../components/loaders/TypingLoader";
+import { orthographyUseCase } from "../../../core/use-cases";
+import GtpMessagesOrthography from "../../components/chat-bubbles/GtpMessagesOrtographyMesage";
 
-// import TextMessageBoxFile from "../../components/chat-input-boxes/TextMessageBoxFile";
-// import TextMessageBoxSelect from "../../components/chat-input-boxes/TextMessageBoxSelect";
+
 
 interface Message {
   text: string;
   isGtp: boolean;
+  info?:{
+    userScore:number,
+    errores:string[],
+    mensaje:string
+  }
 }
 
 export default function OrthographyPage() {
@@ -20,10 +26,28 @@ export default function OrthographyPage() {
   const handlePost = async (text:string)=>
   {
     setIsLoading(true)
-    //cargamos y desestructuramos los mensajes anterioses y agregamos el nuevo
+    //cargamos y desestructuramos  los mensajes anteriores y agregamos el nuevo
     setMessages((prev)=> [...prev, { text: text, isGtp:false}])
 
     //todo:UseCase
+    //utilizamos nuestro usecase
+    const data=await orthographyUseCase(text)
+
+    if(!data.ok){
+      setMessages((prev)=> [...prev, {text: data.mensaje, isGtp:true}])
+    }else{
+      setMessages((prev)=> [...prev, {
+        text: data.mensaje, 
+        isGtp:true,
+        info:{
+          errores:data.errores,
+          mensaje:data.mensaje,
+          userScore:data.userScore
+        }
+      }])
+    }
+
+    console.log(data)
 
     setIsLoading(false)
     //todo: agregar el mensaje de gtp
@@ -41,7 +65,7 @@ export default function OrthographyPage() {
     
           {messages.map((messages, index) =>
             messages.isGtp ? (
-              <GtpMessages  key={index} text="Gto" />
+              <GtpMessagesOrthography  key={index}  {...messages.info!}/>
             ) : (
               <MyMessage key={index} text={messages.text} />
             )
