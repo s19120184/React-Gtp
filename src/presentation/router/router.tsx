@@ -9,6 +9,7 @@ import ProsConsStreamPage from "../pages/pros-cons/ProsConsStreamPage";
 import TextToAudioPage from "../pages/text-to-audio/TextToAudioPage";
 import TranslatePage from "../pages/translate/TranslatePage";
 import { DashboardLayout } from "../layouts/DashboardLayout";
+import ProsConsStreamPage2 from "../pages/pros-cons/ProsConsStreamPage2";
 
 
 export const menuRoutes = [
@@ -31,7 +32,7 @@ export const menuRoutes = [
       icon: "fa-solid fa-water",
       title: "Como stream",
       description: "Con stream de mensajes",
-      component: <ProsConsStreamPage />
+      component: <ProsConsStreamPage2 />
     },
     {
       to: "/translate",
